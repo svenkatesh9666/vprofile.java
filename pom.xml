@@ -161,6 +161,21 @@
 		</plugin>
         </plugins>
     </build>
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activateByDefault>true</activateByDefault>
+			</activation>
+			<properties>
+				<sonar.host.url>
+					http://3.89.128.9:9000
+				</sonar.host.url>
+			</properties>
+			
+		</profile>
+	</profiles>
+		
 	<repositories>
     <repository>
       <id>${NEXUS-GRP-REPO}</id>
