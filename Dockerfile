@@ -1,8 +1,8 @@
 FROM openjdk:8 as BUILD_IMAGE
 RUN apt update && apt install maven -y
 RUN git clone https://github.com/svenkatesh9666/vprofile.java.git
-WORKDIR /vprofile
-RUN cd vprofile && mvn install
+
+RUN cd /vprofile && mvn install
 
 
 
