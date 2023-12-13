@@ -3,9 +3,6 @@ RUN apt update && apt install maven -y
 RUN git clone https://github.com/svenkatesh9666/vprofile.java.git
 WORKDIR /app
 RUN cd /app
-RUN mvn install
-
-
 
 FROM tomcat:8-jre11
 
