@@ -1,13 +1,10 @@
-FROM openjdk:8 AS BUILD_IMAGE
-RUN apt update && apt install maven -y
-RUN git clone https://github.com/svenkatesh9666/vprofile.java.git
-RUN cd vprofile && mvn install
-
-FROM tomcat:8-jre11
-
-RUN rm -rf /usr/local/tomcat/webapps/*
-
-COPY --from=BUILD_IMAGE vprofile/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
-
+FROM ubuntu:22.04
+RUN apt-get -y update
+RUN apt-get -y install openjdk-17-jdk wget
+RUN wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.55/bin/apache-tomcat-8.5.55.tar. gz -0 /tmp/tomcat.tar.gz
+RUN cd /tmp && tar xvfz tomcat.tar.gz
+RUN mv /tmp/apache-tomcat-8.5.55 /opt/tomcat
+COPY vprofile-v2.war /opt/tomcat/webapps/
+COPY tomcat-users.xml /opt/tomcat/conf/
 EXPOSE 8080
-CMD ["catalina.sh", "run"]
+CMD  /opt/tomcat/bin/catalina.sh run
