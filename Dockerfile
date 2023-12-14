@@ -4,7 +4,6 @@ COPY . .
 RUN mvn install
 
 FROM openjdk
-WORKDIR /app
 
 FROM tomcat:8-jre11
 RUN rm -rf /usr/local/tomcat/webapps/*
